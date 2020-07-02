@@ -17,7 +17,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   bool isAuth = false;
   PageController pageController;
-  int pageIndex = 0;
+  int pageIndex =0;
 
   @override
   void initState() {
@@ -51,11 +51,10 @@ class _HomeState extends State<Home> {
   }
 
   @override
-  void dispose() {
+  void dispose(){
     pageController.dispose();
     super.dispose();
   }
-
   login() {
     googleSignIn.signIn();
   }
@@ -64,17 +63,14 @@ class _HomeState extends State<Home> {
     googleSignIn.signOut();
   }
 
-  onPageChanged(int pageIndex) {
-
+  onPageChanged(int pageIndex){
     setState(() {
       this.pageIndex = pageIndex;
     });
   }
-
-  onTap(int pageIndex) {
-    pageController.jumpToPage(
-      pageIndex,
-    );
+  onTap(int pageIndex){
+    pageController.jumpToPage(pageIndex);
+    logout();
   }
 
   Scaffold buildAuthScreen() {
@@ -92,34 +88,31 @@ class _HomeState extends State<Home> {
         physics: NeverScrollableScrollPhysics(),
       ),
       bottomNavigationBar: CupertinoTabBar(
-          currentIndex: pageIndex,
-          onTap: onTap,
-          activeColor: Theme.of(context).primaryColor,
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.whatshot),
+        currentIndex: pageIndex,
+        onTap: onTap,
+        activeColor: Theme.of(context).primaryColor,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.whatshot),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.notifications_active),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.photo_camera,
+              size: 35.0,
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.notifications_active),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.photo_camera,
-                size: 35.0,
-              ),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.search),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.account_circle),
-            ),
-          ]),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle),
+          )
+        ],
+      ),
     );
-    // return RaisedButton(
-    //   child: Text('Logout'),
-    //   onPressed: logout,
-    // );
   }
 
   Scaffold buildUnAuthScreen() {
@@ -141,7 +134,7 @@ class _HomeState extends State<Home> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Text(
-              'FlutterShare',
+              'myInsta',
               style: TextStyle(
                 fontFamily: "Signatra",
                 fontSize: 90.0,
