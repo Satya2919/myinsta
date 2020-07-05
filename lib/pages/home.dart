@@ -14,10 +14,12 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
+
 class _HomeState extends State<Home> {
   bool isAuth = false;
   PageController pageController;
   int pageIndex =0;
+
 
   @override
   void initState() {
@@ -68,9 +70,12 @@ class _HomeState extends State<Home> {
       this.pageIndex = pageIndex;
     });
   }
-  onTap(int pageIndex){
-    pageController.jumpToPage(pageIndex);
-    logout();
+  onTap(int pageIndex) {
+    pageController.animateToPage(
+      pageIndex,
+      duration: Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
   }
 
   Scaffold buildAuthScreen() {

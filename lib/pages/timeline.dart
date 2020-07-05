@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:myinsta/widgets/header.dart';
+import 'package:myinsta/widgets/progress.dart';
 
 class Timeline extends StatefulWidget {
   @override
@@ -12,7 +13,7 @@ class _TimelineState extends State<Timeline> {
   Widget build(context) {
     return Scaffold(
       appBar: header(context, isAppTitle: true),
-      body: Text("Timeline"),
+      body: linearProgress(),
     );
   }
 }
